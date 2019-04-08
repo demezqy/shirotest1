@@ -10,6 +10,7 @@ import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.Factory;
 import org.junit.Test;
 
+
 public class AuthenticationTest1 {
 @Test
     public void testlogin(){
