@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.timisakura.dao.LinkManMapper" >
+  <resultMap id="BaseResultMap" type="com.timisakura.pojo.LinkMan" >
+    <constructor >
+      <idArg column="lkm_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="lkm_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="lkm_cust_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="lkm_gender" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="lkm_phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="lkm_mobile" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="lkm_email" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="lkm_qq" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="lkm_position" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="lkm_memo" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    lkm_id, lkm_name, lkm_cust_id, lkm_gender, lkm_phone, lkm_mobile, lkm_email, lkm_qq, 
+    lkm_position, lkm_memo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from cst_linkman
+    where lkm_id = #{lkmId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from cst_linkman
+    where lkm_id = #{lkmId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.timisakura.pojo.LinkMan" >
+    insert into cst_linkman (lkm_id, lkm_name, lkm_cust_id, 
+      lkm_gender, lkm_phone, lkm_mobile, 
+      lkm_email, lkm_qq, lkm_position, 
+      lkm_memo)
+    values (#{lkmId,jdbcType=BIGINT}, #{lkmName,jdbcType=VARCHAR}, #{lkmCustId,jdbcType=BIGINT}, 
+      #{lkmGender,jdbcType=CHAR}, #{lkmPhone,jdbcType=VARCHAR}, #{lkmMobile,jdbcType=VARCHAR}, 
+      #{lkmEmail,jdbcType=VARCHAR}, #{lkmQq,jdbcType=VARCHAR}, #{lkmPosition,jdbcType=VARCHAR}, 
+      #{lkmMemo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.timisakura.pojo.LinkMan" >
+    insert into cst_linkman
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lkmId != null" >
+        lkm_id,
+      </if>
+      <if test="lkmName != null" >
+        lkm_name,
+      </if>
+      <if test="lkmCustId != null" >
+        lkm_cust_id,
+      </if>
+      <if test="lkmGender != null" >
+        lkm_gender,
+      </if>
+      <if test="lkmPhone != null" >
+        lkm_phone,
+      </if>
+      <if test="lkmMobile != null" >
+        lkm_mobile,
+      </if>
+      <if test="lkmEmail != null" >
+        lkm_email,
+      </if>
+      <if test="lkmQq != null" >
+        lkm_qq,
+      </if>
+      <if test="lkmPosition != null" >
+        lkm_position,
+      </if>
+      <if test="lkmMemo != null" >
+        lkm_memo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lkmId != null" >
+        #{lkmId,jdbcType=BIGINT},
+      </if>
+      <if test="lkmName != null" >
+        #{lkmName,jdbcType=VARCHAR},
+      </if>
+      <if test="lkmCustId != null" >
+        #{lkmCustId,jdbcType=BIGINT},
+      </if>
+      <if test="lkmGender != null" >
+        #{lkmGender,jdbcType=CHAR},
+      </if>
+      <if test="lkmPhone != null" >
+        #{lkmPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="lkmMobile != null" >
+        #{lkmMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="lkmEmail != null" >
+        #{lkmEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="lkmQq != null" >
+        #{lkmQq,jdbcType=VARCHAR},
+      </if>
+      <if test="lkmPosition != null" >
+        #{lkmPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="lkmMemo != null" >
+        #{lkmMemo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.timisakura.pojo.LinkMan" >
+    update cst_linkman
+    <set >
+      <if test="lkmName != null" >
+        lkm_name = #{lkmName,jdbcType=VARCHAR},
+      </if>
+      <if test="lkmCustId != null" >
+        lkm_cust_id = #{lkmCustId,jdbcType=BIGINT},
+      </if>
+      <if test="lkmGender != null" >
+        lkm_gender = #{lkmGender,jdbcType=CHAR},
+      </if>
+      <if test="lkmPhone != null" >
+        lkm_phone = #{lkmPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="lkmMobile != null" >
+        lkm_mobile = #{lkmMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="lkmEmail != null" >
+        lkm_email = #{lkmEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="lkmQq != null" >
+        lkm_qq = #{lkmQq,jdbcType=VARCHAR},
+      </if>
+      <if test="lkmPosition != null" >
+        lkm_position = #{lkmPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="lkmMemo != null" >
+        lkm_memo = #{lkmMemo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where lkm_id = #{lkmId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.timisakura.pojo.LinkMan" >
+    update cst_linkman
+    set lkm_name = #{lkmName,jdbcType=VARCHAR},
+      lkm_cust_id = #{lkmCustId,jdbcType=BIGINT},
+      lkm_gender = #{lkmGender,jdbcType=CHAR},
+      lkm_phone = #{lkmPhone,jdbcType=VARCHAR},
+      lkm_mobile = #{lkmMobile,jdbcType=VARCHAR},
+      lkm_email = #{lkmEmail,jdbcType=VARCHAR},
+      lkm_qq = #{lkmQq,jdbcType=VARCHAR},
+      lkm_position = #{lkmPosition,jdbcType=VARCHAR},
+      lkm_memo = #{lkmMemo,jdbcType=VARCHAR}
+    where lkm_id = #{lkmId,jdbcType=BIGINT}
+  </update>
+</mapper>
