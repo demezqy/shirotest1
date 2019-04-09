@@ -46,7 +46,7 @@ public class AuthenticationTest1 {
     System.out.println("是否认证通过：" + isAuthenticated);
 
     // 退出操作
-   // subject.logout();
+ subject.logout();
 
     // 是否认证通过
     isAuthenticated = subject.isAuthenticated();
