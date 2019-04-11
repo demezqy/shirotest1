@@ -8,46 +8,36 @@
 	http://www.springframework.org/schema/mvc/spring-mvc.xsd">
     <!-- web.xml中shiro的filter对应的bean -->
     <!-- Shiro 的Web过滤器 -->
+    <!-- 第一必须：自定义filter配置 -->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
     <property name="securityManager" ref="securityManager" />
     <!-- loginUrl认证提交地址，如果没有认证将会请求此地址进行认证，请求此地址将由formAuthenticationFilter进行表单认证 -->
-    <property name="loginUrl" value="/login.action" />
-    <!-- 认证成功统一跳转到first.action，建议不配置，shiro认证成功自动到上一个请求路径 -->
-    <property name="successUrl" value="/first.action"/>
-    <!-- 通过unauthorizedUrl指定没有权限操作时跳转页面-->
-    <property name="unauthorizedUrl" value="/refuse.jsp" />
-    <!-- 自定义filter配置 -->
-    <property name="filters">
-        <map>
-            <!-- 将自定义 的FormAuthenticationFilter注入shiroFilter中-->
-            <entry key="authc" value-ref="formAuthenticationFilter" />
-        </map>
-    </property>
+   <!-- <property name="loginUrl" value="/login.action" />
+    &lt;!&ndash; 认证成功统一跳转到first.action，建议不配置，shiro认证成功自动到上一个请求路径 &ndash;&gt;
+    &lt;!&ndash; 通过unauthorizedUrl指定没有权限操作时跳转页面&ndash;&gt;
+    <property name="unauthorizedUrl" value="/refuse.jsp" />-->
+        <property name="loginUrl" value="/login.do" />
+        <property name="successUrl" value="index.jsp"/>
         <!-- 过虑器链定义，从上向下顺序执行，一般将/**放在最下边 -->
         <property name="filterChainDefinitions">
             <value>
+                /logout.do=logout
+                <!--对所有的的访问进行拦截-->
+               /**=authc
                 <!-- 对静态资源设置匿名访问 -->
-
             </value>
         </property>
     </bean>
-    <!-- securityManager安全管理器 -->
+    <!-- 第二个;必须securityManager安全管理器 -->
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <property name="realm" ref="customRealm" />
         <!-- 注入缓存管理器 -->
-
         <!-- 注入session管理器 -->
-
         <!-- 记住我 -->
+    </bean>
+    <!--第三个必须： realm -->
+    <!--有这三个必须shiro就能启动-->
+    <bean id="customRealm" class="com.timisakura.shiro.CustomRealm">
+    </bean>
 
-    </bean>
-    <!-- realm -->
-    <bean id="customRealm" class="cn.itcast.ssm.shiro.CustomRealm">
-        <!-- 将凭证匹配器设置到realm中，realm按照凭证匹配器的要求进行散列 -->
-        <property name="credentialsMatcher" ref="credentialsMatcher"/>
-    </bean>
-    <!-- 缓存管理器 -->
-    <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
-        <property name="cacheManagerConfigFile" value="classpath:shiro-ehcache.xml"/>
-    </bean>
 </beans>

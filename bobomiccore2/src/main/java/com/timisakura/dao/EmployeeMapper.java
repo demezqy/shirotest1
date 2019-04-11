@@ -16,4 +16,6 @@ public interface EmployeeMapper {
     int updateByPrimaryKey(Employee record);
    int checkEmployeename(String username);
     int checkEmail(String email);
+
+    Employee findUserName(String username);
 }

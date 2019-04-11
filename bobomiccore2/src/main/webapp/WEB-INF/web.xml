@@ -33,6 +33,12 @@
     </init-param>
 
   </filter>
+  <!-- springmvc的拦截 -->
+  <servlet-mapping>
+    <servlet-name>dispatcher</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+
   <filter-mapping>
     <filter-name>characterEncodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
@@ -61,9 +67,5 @@
     <load-on-startup>1</load-on-startup>
   </servlet>
 
-  <!-- springmvc的拦截 -->
-  <servlet-mapping>
-    <servlet-name>dispatcher</servlet-name>
-    <url-pattern>*.do</url-pattern>
-  </servlet-mapping>
+
 </web-app>

@@ -24,6 +24,13 @@
     from employee
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <!--通过名字查询这个对象-->
+  <select id="findUserName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from employee
+    where username = #{username,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from employee
     where id = #{id,jdbcType=INTEGER}

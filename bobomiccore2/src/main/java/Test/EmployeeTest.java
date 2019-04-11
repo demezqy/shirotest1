@@ -25,7 +25,7 @@ public class EmployeeTest {
     public void register(){
         EmployeeVO employeeVO=new EmployeeVO();
         employeeVO.setEmail("zaazh@qq.com");
-        employeeVO.setRealname("sb");
+        employeeVO.setRealname("sbsdf");
         ServerResponse1 result=employeeService.register(employeeVO,"email");
         System.out.println(result);
     }
@@ -43,5 +43,12 @@ public class EmployeeTest {
     public void selectEmain(){
         int ee=employeeMapper.checkEmail("eee");
         System.out.println(ee);
+    }
+    @Test
+    public void findUseername(){
+        String username="bbbb";
+        Employee employee=employeeService.findUserName(username);
+        System.out.println("_____________");
+        System.out.println(employee);
     }
 }

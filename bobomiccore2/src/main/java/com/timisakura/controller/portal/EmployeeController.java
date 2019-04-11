@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.*;
 public class EmployeeController {
     @Autowired
    private IEmployeeService employeeService;
+
+    public void setEmployeeService(IEmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
+
     @RequestMapping("register.do")
 
     public ServerResponse1 register(EmployeeVO employeeVO, @RequestParam(value = "type") String type){
@@ -17,5 +22,6 @@ public class EmployeeController {
         return employeeService.register(employeeVO,type);
 
     }
+
 
 }

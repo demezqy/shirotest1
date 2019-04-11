@@ -61,7 +61,14 @@ public class IEmployeeServiceImpl implements IEmployeeService {
         return ServerResponse1.createBySuccessMessage("注册成功");
     }
 
-//    / 为什么在前端做了验证，后端还要在做？那么到底是在前端做验证还是在后端做呢？
+    @Override
+    public Employee findUserName(String username) {
+
+        return employeeMapper.findUserName(username);
+
+    }
+
+    //    / 为什么在前端做了验证，后端还要在做？那么到底是在前端做验证还是在后端做呢？
     // 虽然前端会对表单进行校验，但是如果攻击者分析接口，直接调用接口，就可以绕过前端的校验
 private ServerResponse1<String> checkValid(String subject, String type) {
     //type = null;
