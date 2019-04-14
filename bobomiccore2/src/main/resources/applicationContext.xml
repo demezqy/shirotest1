@@ -14,7 +14,6 @@
 
     <aop:aspectj-autoproxy/>
 
-    <!-- 拆分 -->
     <import resource="applicationContext-datasource.xml"/>
     <import resource="applicationContext-shiro.xml"/>
 </beans>

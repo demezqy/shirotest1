@@ -83,6 +83,9 @@ public class CustomRealm extends AuthorizingRealm{
     }
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
+
+
+
         return null;
     }
 

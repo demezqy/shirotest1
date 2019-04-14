@@ -24,20 +24,26 @@
                 /logout.do=logout
                 <!--对所有的的访问进行拦截-->
                /**=authc
+
                 <!-- 对静态资源设置匿名访问 -->
             </value>
         </property>
     </bean>
     <!-- 第二个;必须securityManager安全管理器 -->
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-        <property name="realm" ref="customRealm" />
+        <!--<property name="realm" ref="customRealm" />-->
+        <property name="realm" ref="userRealm" />
         <!-- 注入缓存管理器 -->
+        <property name="cacheManager" ref="cacheManager"/>
         <!-- 注入session管理器 -->
         <!-- 记住我 -->
     </bean>
     <!--第三个必须： realm -->
     <!--有这三个必须shiro就能启动-->
-    <bean id="customRealm" class="com.timisakura.shiro.CustomRealm">
+    <!--<bean id="customRealm" class="com.timisakura.shiro.CustomRealm"></bean>-->
+    <bean id="userRealm" class="com.timisakura.shiro.UserRealm"></bean>
+    <!-- 缓存管理器 -->
+    <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <property name="cacheManagerConfigFile" value="classpath:shiro-ehcache.xml"/>
     </bean>
-
 </beans>

@@ -19,6 +19,38 @@
   </properties>
 
   <dependencies>
+    <!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-spring -->
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-spring</artifactId>
+      <version>1.4.0</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-web -->
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-web</artifactId>
+      <version>1.4.0</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-core -->
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-core</artifactId>
+      <version>1.4.0</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-ehcache -->
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-ehcache</artifactId>
+      <version>1.4.0</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/net.sf.ehcache/ehcache -->
+    <dependency>
+      <groupId>net.sf.ehcache</groupId>
+      <artifactId>ehcache</artifactId>
+      <version>2.10.6</version>
+    </dependency>
+
+
     <dependency>
       <groupId>org.apache.tomcat</groupId>
       <artifactId>tomcat-servlet-api</artifactId>
@@ -36,7 +68,12 @@
       <artifactId>spring-oxm</artifactId>
       <version>${org.springframework.version}</version>
     </dependency>
-
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>${org.springframework.version}</version>
+      <scope>test</scope>
+    </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-jdbc</artifactId>
